@@ -18,16 +18,33 @@ function AllUser() {
   }, []);
 
   return (
-    <div>
-      <h1>All User List</h1>
-      <ul>
-        {data.map((user, idx) => (
-          <li key={idx}>
-            <strong>Name:</strong> {user.name} | <strong>Email:</strong>{" "}
-            {user.email} | <strong>Phone:</strong> {user.phone}
-          </li>
-        ))}
-      </ul>
+    <div className="bg-white shadow-md rounded-lg p-6 mt-6">
+      <h1 className="text-2xl font-bold mb-4 text-blue-700">All User List</h1>
+      {data.length === 0 ? (
+        <p className="text-gray-500">No users found.</p>
+      ) : (
+        <ul className="space-y-4">
+          {data.map((user, idx) => (
+            <li
+              key={idx}
+              className="border border-gray-200 p-4 rounded-md shadow-sm hover:shadow-md transition-shadow"
+            >
+              <p>
+                <span className="font-semibold text-gray-700">Name:</span>{" "}
+                {user.name}
+              </p>
+              <p>
+                <span className="font-semibold text-gray-700">Email:</span>{" "}
+                {user.email}
+              </p>
+              <p>
+                <span className="font-semibold text-gray-700">Phone:</span>{" "}
+                {user.phone}
+              </p>
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 }
